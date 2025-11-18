@@ -80,12 +80,10 @@ jobs:
         python -m playwright install-deps
         
     - name: Create credentials file for Google Sheets
-      if: env.GOOGLE_CREDENTIALS != ''
+      if: secrets.GOOGLE_CREDENTIALS != ''
       run: |
         echo '${{ secrets.GOOGLE_CREDENTIALS }}' > credentials.json
         echo "✓ Google credentials configured"
-      env:
-        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
         
     - name: Debug info
       if: inputs.debug == 'true'
@@ -98,7 +96,7 @@ jobs:
     - name: Run CoinMarketCap AI Parser
       timeout-minutes: 30
       run: |
-        python cmc_parser.py
+        python parser.py
         
     - name: Upload results as artifact
       if: always()
