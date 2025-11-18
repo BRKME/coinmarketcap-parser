@@ -1,10 +1,11 @@
+name: CoinMarketCap AI Parser
+
 on:
   schedule:
-    # Каждые 6 часов (по умолчанию)
+    # Каждые 6 часов
     - cron: '0 */6 * * *'
     
-    # Или выберите другой вариант:
-    
+    # Или раскомментируйте другие варианты:
     # Каждые 3 часа
     # - cron: '0 */3 * * *'
     
@@ -13,3 +14,57 @@ on:
     
     # Каждый понедельник в 10:00 UTC
     # - cron: '0 10 * * 1'
+  
+  # Запуск вручную из интерфейса GitHub
+  workflow_dispatch:
+
+jobs:
+  run-parser:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libasound2
+        
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    - name: Install Playwright browsers
+      run: |
+        python -m playwright install chromium
+        python -m playwright install-deps
+        
+    - name: Create credentials file (if exists)
+      run: |
+        if [ -n "${{ secrets.GOOGLE_CREDENTIALS }}" ]; then
+          echo '${{ secrets.GOOGLE_CREDENTIALS }}' > credentials.json
+          echo "✓ Google credentials configured"
+        else
+          echo "⚠️ Google credentials not found, Google Sheets will be skipped"
+        fi
+        
+    - name: Run CoinMarketCap AI Parser
+      run: |
+        python cmc_parser.py
+        
+    - name: Upload results as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: cmc-parser-results
+        path: |
+          cmc_full_data.json
+          cmc_questions_answers.csv
+          screenshot_final.png
+        retention-days: 7
