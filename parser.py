@@ -26,8 +26,8 @@ MAX_QUESTIONS = int(os.getenv('MAX_QUESTIONS', 8))
 MAX_RETRIES = int(os.getenv('MAX_RETRIES', 2))
 
 # Telegram настройки
-TELEGRAM_BOT_TOKEN = "8323539910:AAG6DYij-FuqT7q-ovsBNNgEnWH2V6FXhoM"
-TELEGRAM_CHAT_ID = "@Ready777_bot"
+BOT_TOKEN = '8442392037:AAEiM_b4QfdFLqbmmc1PXNvA99yxmFVLEp8'
+CHAT_ID = '350766421'
 
 def send_telegram_message(message, parse_mode='HTML'):
     """Отправляет сообщение в Telegram с разбивкой на части"""
