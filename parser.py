@@ -7,11 +7,6 @@
 ✅ Отправка результатов в Telegram
 """
 
-# Установка библиотек
-!pip install playwright beautifulsoup4 gspread oauth2client requests -q
-!playwright install chromium
-!playwright install-deps chromium
-
 import asyncio
 from playwright.async_api import async_playwright
 from bs4 import BeautifulSoup
@@ -22,9 +17,9 @@ import traceback
 from datetime import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-from google.colab import auth
-from google.auth import default
 import requests
+import os
+import sys
 
 # Глобальные настройки
 MAX_QUESTIONS = 8  # Обрабатываем все вопросы
@@ -333,77 +328,76 @@ def calculate_statistics(results):
 def upload_to_google_sheets(data, sheet_name='CoinMarketCap AI Parser'):
     """
     Выгружает данные в Google Sheets
-
-    Args:
-        data: Список словарей с данными
-        sheet_name: Название таблицы
     """
     try:
         print("\n📤 Выгрузка в Google Sheets...")
+        
+        # Для GitHub Actions нужно использовать Service Account
+        # Создайте файл credentials.json с данными сервисного аккаунта
+        if os.path.exists('credentials.json'):
+            scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+            creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
+            gc = gspread.authorize(creds)
+            
+            # Создаем или открываем таблицу
+            try:
+                spreadsheet = gc.open(sheet_name)
+                print(f"✓ Открыта существующая таблица: {sheet_name}")
+            except:
+                spreadsheet = gc.create(sheet_name)
+                print(f"✓ Создана новая таблица: {sheet_name}")
 
-        # Аутентификация через Colab
-        auth.authenticate_user()
-        creds, _ = default()
+            # Создаем новый лист с timestamp
+            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
+            worksheet = spreadsheet.add_worksheet(title=f"Parse {timestamp}", rows=100, cols=10)
 
-        # Подключаемся к Google Sheets
-        gc = gspread.authorize(creds)
+            # Подготавливаем данные
+            headers = ['#', 'Вопрос', 'Ответ', 'Длина ответа', 'Попытка', 'Время']
+            rows = [headers]
 
-        # Создаем или открываем таблицу
-        try:
-            spreadsheet = gc.open(sheet_name)
-            print(f"✓ Открыта существующая таблица: {sheet_name}")
-        except:
-            spreadsheet = gc.create(sheet_name)
-            print(f"✓ Создана новая таблица: {sheet_name}")
+            for i, item in enumerate(data, 1):
+                rows.append([
+                    i,
+                    item['question'],
+                    item['answer'],
+                    item['length'],
+                    item.get('attempt', 1),
+                    item['timestamp']
+                ])
 
-        # Создаем новый лист с timestamp
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
-        worksheet = spreadsheet.add_worksheet(title=f"Parse {timestamp}", rows=100, cols=10)
+            # Добавляем пустую строку и статистику
+            stats = calculate_statistics(data)
+            rows.append([])
+            rows.append(['СТАТИСТИКА', '', '', '', '', ''])
+            rows.append(['Всего ответов', stats.get('total_answers', 0), '', '', '', ''])
+            rows.append(['Средняя длина', stats.get('avg_length', 0), '', '', '', ''])
+            rows.append(['Мин. длина', stats.get('min_length', 0), '', '', '', ''])
+            rows.append(['Макс. длина', stats.get('max_length', 0), '', '', '', ''])
+            rows.append(['Всего символов', stats.get('total_chars', 0), '', '', '', ''])
 
-        # Подготавливаем данные
-        headers = ['#', 'Вопрос', 'Ответ', 'Длина ответа', 'Попытка', 'Время']
-        rows = [headers]
+            # Записываем данные
+            worksheet.update('A1', rows)
 
-        for i, item in enumerate(data, 1):
-            rows.append([
-                i,
-                item['question'],
-                item['answer'],
-                item['length'],
-                item.get('attempt', 1),
-                item['timestamp']
-            ])
+            # Форматирование
+            worksheet.format('A1:F1', {
+                'backgroundColor': {'red': 0.2, 'green': 0.6, 'blue': 0.86},
+                'textFormat': {'bold': True, 'foregroundColor': {'red': 1, 'green': 1, 'blue': 1}}
+            })
 
-        # Добавляем пустую строку и статистику
-        stats = calculate_statistics(data)
-        rows.append([])
-        rows.append(['СТАТИСТИКА', '', '', '', '', ''])
-        rows.append(['Всего ответов', stats.get('total_answers', 0), '', '', '', ''])
-        rows.append(['Средняя длина', stats.get('avg_length', 0), '', '', '', ''])
-        rows.append(['Мин. длина', stats.get('min_length', 0), '', '', '', ''])
-        rows.append(['Макс. длина', stats.get('max_length', 0), '', '', '', ''])
-        rows.append(['Всего символов', stats.get('total_chars', 0), '', '', '', ''])
+            # Авторазмер колонок
+            worksheet.columns_auto_resize(0, 5)
 
-        # Записываем данные
-        worksheet.update('A1', rows)
+            # Получаем ссылку
+            sheet_url = spreadsheet.url
 
-        # Форматирование
-        worksheet.format('A1:F1', {
-            'backgroundColor': {'red': 0.2, 'green': 0.6, 'blue': 0.86},
-            'textFormat': {'bold': True, 'foregroundColor': {'red': 1, 'green': 1, 'blue': 1}}
-        })
+            print(f"✓ Данные успешно выгружены в Google Sheets!")
+            print(f"📊 Ссылка на таблицу: {sheet_url}")
+            print(f"📄 Лист: {worksheet.title}")
 
-        # Авторазмер колонок
-        worksheet.columns_auto_resize(0, 5)
-
-        # Получаем ссылку
-        sheet_url = spreadsheet.url
-
-        print(f"✓ Данные успешно выгружены в Google Sheets!")
-        print(f"📊 Ссылка на таблицу: {sheet_url}")
-        print(f"📄 Лист: {worksheet.title}")
-
-        return sheet_url
+            return sheet_url
+        else:
+            print("⚠️ Файл credentials.json не найден, пропускаем выгрузку в Google Sheets")
+            return None
 
     except Exception as e:
         print(f"✗ Ошибка при выгрузке в Google Sheets: {e}")
@@ -501,13 +495,15 @@ async def main_parser():
         try:
             print("🌐 Загрузка страницы...")
 
+            # Установка браузера для GitHub Actions
             browser = await p.chromium.launch(
                 headless=True,
                 args=[
                     '--no-sandbox',
                     '--disable-setuid-sandbox',
                     '--disable-dev-shm-usage',
-                    '--disable-gpu'
+                    '--disable-gpu',
+                    '--single-process'
                 ]
             )
 
@@ -654,19 +650,11 @@ async def main_parser():
             print(f"  ✓ Успешно обработано: {len(all_results)}")
             print(f"  ✗ Не удалось обработать: {len(failed_questions)}")
             print(f"  📊 Средняя длина ответа: {stats.get('avg_length', 0)} символов")
-            print(f"  💾 Сохранено файлов: 4 (JSON, CSV, Google Sheets, Screenshot)")
+            print(f"  💾 Сохранено файлов: 3 (JSON, CSV, Screenshot)")
+            if sheet_url:
+                print(f"  📊 Google Sheets: Обновлено")
             print(f"  📱 Отправлено в Telegram: 3 файла + статистика")
             print("="*70 + "\n")
-
-            if all_results:
-                print("📋 ПРИМЕРЫ СОХРАНЕННЫХ ДАННЫХ:")
-                print("-"*70)
-                for i, result in enumerate(all_results[:2], 1):
-                    print(f"\n[{i}] Вопрос: {result['question']}")
-                    print(f"    Длина ответа: {result['length']} символов")
-                    print(f"    Попытка: {result['attempt']}")
-                    print(f"    Превью: {result['answer'][:150]}...")
-                print("-"*70 + "\n")
 
             await browser.close()
             print("✓ Браузер закрыт\n")
@@ -683,35 +671,28 @@ async def main_parser():
 """
             send_telegram_message(error_message)
 
-# Запуск
-print("="*70)
-print("🚀 РАСШИРЕННЫЙ ПАРСЕР COINMARKETCAP AI")
-print("="*70)
-print("\n📋 ВОЗМОЖНОСТИ:")
-print("  ✅ Обработка всех 8 вопросов")
-print("  ✅ Повторные попытки для пропущенных")
-print("  ✅ Выгрузка в Google Sheets")
-print("  ✅ Статистика по длине ответов")
-print("  ✅ Отправка результатов в Telegram")
-print(f"\n⚙️  НАСТРОЙКИ:")
-print(f"  • Максимум вопросов: {MAX_QUESTIONS}")
-print(f"  • Повторных попыток: {MAX_RETRIES}")
-print(f"  • Telegram бот: @Ready777_bot")
-print("\n" + "="*70 + "\n")
+def main():
+    """Запуск парсера"""
+    print("="*70)
+    print("🚀 РАСШИРЕННЫЙ ПАРСЕР COINMARKETCAP AI")
+    print("="*70)
+    print("\n📋 ВОЗМОЖНОСТИ:")
+    print("  ✅ Обработка всех 8 вопросов")
+    print("  ✅ Повторные попытки для пропущенных")
+    print("  ✅ Выгрузка в Google Sheets")
+    print("  ✅ Статистика по длине ответов")
+    print("  ✅ Отправка результатов в Telegram")
+    print(f"\n⚙️  НАСТРОЙКИ:")
+    print(f"  • Максимум вопросов: {MAX_QUESTIONS}")
+    print(f"  • Повторных попыток: {MAX_RETRIES}")
+    print(f"  • Telegram бот: @Ready777_bot")
+    print("\n" + "="*70 + "\n")
+    
+    # Запуск асинхронной функции
+    asyncio.run(main_parser())
+    
+    print("\n✅ ВСЕ ОПЕРАЦИИ ЗАВЕРШЕНЫ!")
+    print("="*70)
 
-await main_parser()
-
-print("\n✅ ВСЕ ОПЕРАЦИИ ЗАВЕРШЕНЫ!")
-print("="*70)
-print("\n📦 СОЗДАННЫЕ ФАЙЛЫ:")
-print("  • cmc_full_data.json - Полные данные в JSON")
-print("  • cmc_questions_answers.csv - Вопросы и ответы в CSV")
-print("  • 📊 Google Sheets - Интерактивная таблица")
-print("  • screenshot_final.png - Финальный скриншот")
-print("\n📱 ОТПРАВЛЕНО В TELEGRAM:")
-print("  • Статистика парсинга")
-print("  • Пример ответа")
-print("  • JSON файл с данными")
-print("  • CSV файл с вопросами")
-print("  • Скриншот страницы")
-print("\n" + "="*70)
+if __name__ == "__main__":
+    main()
