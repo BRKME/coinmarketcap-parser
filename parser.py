@@ -487,93 +487,25 @@ def save_to_csv(data, filename='cmc_questions_answers.csv'):
         print(f"✗ Ошибка сохранения CSV: {e}")
         return None
 
-def save_news_queue(results):
-    """Сохраняет очередь новостей для постепенной отправки"""
-    try:
-        queue_data = {
-            'parsed_at': datetime.now().isoformat(),
-            'news': results,
-            'next_index': 0
-        }
-        with open('news_queue.json', 'w', encoding='utf-8') as f:
-            json.dump(queue_data, f, indent=2, ensure_ascii=False)
-        print(f"✓ Очередь из {len(results)} новостей сохранена")
-    except Exception as e:
-        print(f"✗ Ошибка сохранения очереди: {e}")
-
-def load_news_queue():
-    """Загружает очередь новостей"""
-    try:
-        if os.path.exists('news_queue.json'):
-            with open('news_queue.json', 'r', encoding='utf-8') as f:
-                return json.load(f)
-        return None
-    except Exception as e:
-        print(f"⚠️ Ошибка загрузки очереди: {e}")
-        return None
-
-def update_news_queue(next_index):
-    """Обновляет индекс следующей новости в очереди"""
-    try:
-        queue_data = load_news_queue()
-        if queue_data:
-            queue_data['next_index'] = next_index
-            with open('news_queue.json', 'w', encoding='utf-8') as f:
-                json.dump(queue_data, f, indent=2, ensure_ascii=False)
-    except Exception as e:
-        print(f"✗ Ошибка обновления очереди: {e}")
-
-def send_next_news_from_queue():
-    """Отправляет следующую новость из очереди"""
-    try:
-        queue_data = load_news_queue()
-        
-        if not queue_data:
-            print("❌ Очередь новостей пуста. Запустите парсинг!")
-            return False
-        
-        news = queue_data['news']
-        next_index = queue_data['next_index']
-        
-        if next_index >= len(news):
-            print("✅ Все новости из текущей очереди отправлены!")
-            print("🔄 Удаляю старую очередь...")
-            if os.path.exists('news_queue.json'):
-                os.remove('news_queue.json')
-            return False
-        
-        # Отправляем новость
-        result = news[next_index]
-        print(f"\n📤 Отправка новости {next_index + 1}/{len(news)}")
-        
-        send_question_answer_to_telegram(
-            question_num=next_index + 1,
-            total_questions=len(news),
-            question=result['question'],
-            answer=result['answer']
-        )
-        
-        # Обновляем индекс
-        update_news_queue(next_index + 1)
-        
-        print(f"✓ Новость отправлена")
-        print(f"ℹ️  Осталось новостей: {len(news) - next_index - 1}")
-        
-        return True
-        
-    except Exception as e:
-        print(f"✗ Ошибка отправки новости из очереди: {e}")
-        return False
-
 def send_all_results_to_telegram(results):
-    """Сохраняет новости в очередь для постепенной отправки"""
+    """Отправляет все результаты в Telegram - каждый вопрос отдельным сообщением"""
     try:
-        print("\n📦 СОЗДАНИЕ ОЧЕРЕДИ НОВОСТЕЙ")
-        save_news_queue(results)
-        print("✓ Очередь создана. Новости будут отправляться по одной через час")
+        print("\n📤 Отправка результатов в Telegram...")
+        
+        # Отправляем каждый вопрос и ответ отдельным сообщением (без стартового сообщения)
+        total_questions = len(results)
+        for i, result in enumerate(results, 1):
+            send_question_answer_to_telegram(
+                question_num=i,
+                total_questions=total_questions,
+                question=result['question'],
+                answer=result['answer']
+            )
+        
+        print("✓ Все результаты отправлены в Telegram")
         
     except Exception as e:
-        print(f"✗ Ошибка создания очереди: {e}")
+        print(f"✗ Ошибка при отправке результатов в Telegram: {e}")
 
 async def main_parser():
     """Главная функция парсера"""
@@ -676,7 +608,7 @@ async def main_parser():
             full_report_file = save_full_report_to_file(all_results, 'full_report.txt')
 
             # Отправляем результаты в Telegram (только TLDR)
-            print("\n📤 СОЗДАНИЕ ОЧЕРЕДИ ДЛЯ ПУБЛИКАЦИИ")
+            print("\n📤 ОТПРАВКА КРАТКИХ РЕЗУЛЬТАТОВ В TELEGRAM")
             send_all_results_to_telegram(all_results)
 
             print(f"\n🎯 ИТОГОВАЯ СТАТИСТИКА")
@@ -704,37 +636,21 @@ async def main_parser():
 def main():
     """Запуск парсера"""
     print("="*70)
-    print("🚀 ПАРСЕР COINMARKETCAP AI С ОТЛОЖЕННОЙ ПУБЛИКАЦИЕЙ")
+    print("🚀 УЛУЧШЕННЫЙ ПАРСЕР COINMARKETCAP AI")
     print("="*70)
+    print("\n📋 ВОЗМОЖНОСТИ:")
+    print("  ✅ Обработка всех 8 вопросов")
+    print("  ✅ Повторные попытки для пропущенных")
+    print("  ✅ Каждый вопрос/ответ отдельным сообщением в Telegram")
+    print("  ✅ Без лишних файлов и статистики в чате")
+    print(f"\n⚙️  НАСТРОЙКИ:")
+    print(f"  • Максимум вопросов: {MAX_QUESTIONS}")
+    print(f"  • Повторных попыток: {MAX_RETRIES}")
+    print("\n" + "="*70 + "\n")
     
-    # Проверяем режим работы
-    mode = os.getenv('MODE', 'publish')  # 'parse' или 'publish'
+    asyncio.run(main_parser())
     
-    if mode == 'parse':
-        # РЕЖИМ ПАРСИНГА - собираем новости и создаем очередь
-        print("\n📋 РЕЖИМ: ПАРСИНГ И СОЗДАНИЕ ОЧЕРЕДИ")
-        print("  ✅ Сбор всех новостей")
-        print("  ✅ Создание очереди для публикации")
-        print(f"\n⚙️  НАСТРОЙКИ:")
-        print(f"  • Максимум вопросов: {MAX_QUESTIONS}")
-        print(f"  • Повторных попыток: {MAX_RETRIES}")
-        print("\n" + "="*70 + "\n")
-        
-        asyncio.run(main_parser())
-        
-    else:
-        # РЕЖИМ ПУБЛИКАЦИИ - отправляем следующую новость
-        print("\n📋 РЕЖИМ: ПУБЛИКАЦИЯ СЛЕДУЮЩЕЙ НОВОСТИ")
-        print("  📤 Отправка одной новости из очереди")
-        print("\n" + "="*70 + "\n")
-        
-        success = send_next_news_from_queue()
-        
-        if not success:
-            print("\n⚠️  Очередь пуста или завершена!")
-            print("💡 Запустите парсинг командой: MODE=parse python parser.py")
-    
-    print("\n✅ ОПЕРАЦИЯ ЗАВЕРШЕНА!")
+    print("\n✅ ВСЕ ОПЕРАЦИИ ЗАВЕРШЕНЫ!")
     print("="*70)
 
 if __name__ == "__main__":
