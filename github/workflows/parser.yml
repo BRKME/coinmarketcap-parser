@@ -1,0 +1,19 @@
+name: CoinMarketCap AI Parser
+on:
+  schedule:
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+jobs:
+  run-parser:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+name: Set up Python uses: actions/setup-python@v4 with: python-version: '3.10'
+name: Install dependencies run: | pip install -r requirements.txt python -m playwright install chromium
+name: Run parser timeout-minutes: 30 run: python parser.py
+name: Check generated files run: | echo "📁 Проверка созданных файлов:" ls -la echo "📊 Размер файлов:" du -h cmc_full_data.json cmc_questions_answers.csv screenshot_final.png 2>/dev/null || echo "Файлы не найдены"
+name: Upload results uses: actions/upload-artifact@v4 with: name: parser-results-${{ github.run_id }} path: | cmc_full_data.json cmc_questions_answers.csv screenshot_final.png retention-days: 7 if-no-files-found: warn
+name: Show workflow info if: always() run: | echo "✅ Workflow завершен" echo "📊 Результаты доступны в артефактах" echo "🔗 Ссылка на артефакты: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
