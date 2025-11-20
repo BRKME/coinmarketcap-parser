@@ -33,49 +33,7 @@ GITHUB_IMAGES_URL = "https://raw.githubusercontent.com/BRKME/coinmarketcap-parse
 # Список имен файлов картинок (от 10.jpg до 35.jpg)
 IMAGE_FILES = [f"{i}.jpg" for i in range(10, 36)]  # Генерирует: 10.jpg, 11.jpg, ..., 35.jpg
 
-def send_telegram_photo_with_caption(photo_url, caption, parse_mode='HTML'):
-    """Отправляет фото с подписью в Telegram"""
-    try:
-        url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendPhoto"
-        
-        print(f"🔍 Попытка отправить фото: {photo_url}")
-        print(f"📏 Длина caption: {len(caption)} символов")
-        
-        # Telegram всегда требует отправлять длинные тексты отдельно
-        # Сначала отправляем фото без подписи
-        payload = {
-            'chat_id': TELEGRAM_CHAT_ID,
-            'photo': photo_url
-        }
-        response = requests.post(url, data=payload, timeout=30)
-        
-        print(f"📊 Response status: {response.status_code}")
-        
-        if response.status_code == 200:
-            print("✓ Фото отправлено в Telegram")
-            # Ждем немного и отправляем текст отдельным сообщением
-            time.sleep(1)
-            send_telegram_message(caption, parse_mode)
-            return True
-        else:
-            print(f"✗ Ошибка отправки фото: {response.status_code} - {response.text}")
-            # Если фото не отправилось - отправляем хотя бы текст
-            print("⚠️ Отправляю только текст без фото")
-            send_telegram_message(caption, parse_mode)
-            return False
-                
-    except Exception as e:
-        print(f"✗ Ошибка при отправке фото в Telegram: {e}")
-        traceback.print_exc()
-        # В случае ошибки отправляем хотя бы текст
-        print("⚠️ Отправляю только текст без фото")
-        send_telegram_message(caption, parse_mode)
-        return False
-
-def get_random_image_url():
-    """Возвращает случайный URL картинки из GitHub"""
-    random_image = random.choice(IMAGE_FILES)
-    return GITHUB_IMAGES_URL + random_image
+def send_telegram_message(message, parse_mode='HTML'):
     """Отправляет сообщение в Telegram с разбивкой на части при необходимости"""
     try:
         max_length = 4000
@@ -132,6 +90,50 @@ def get_random_image_url():
     except Exception as e:
         print(f"✗ Ошибка при отправке в Telegram: {e}")
         return False
+
+def send_telegram_photo_with_caption(photo_url, caption, parse_mode='HTML'):
+    """Отправляет фото с подписью в Telegram"""
+    try:
+        url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendPhoto"
+        
+        print(f"🔍 Попытка отправить фото: {photo_url}")
+        print(f"📏 Длина caption: {len(caption)} символов")
+        
+        # Telegram всегда требует отправлять длинные тексты отдельно
+        # Сначала отправляем фото без подписи
+        payload = {
+            'chat_id': TELEGRAM_CHAT_ID,
+            'photo': photo_url
+        }
+        response = requests.post(url, data=payload, timeout=30)
+        
+        print(f"📊 Response status: {response.status_code}")
+        
+        if response.status_code == 200:
+            print("✓ Фото отправлено в Telegram")
+            # Ждем немного и отправляем текст отдельным сообщением
+            time.sleep(1)
+            send_telegram_message(caption, parse_mode)
+            return True
+        else:
+            print(f"✗ Ошибка отправки фото: {response.status_code} - {response.text}")
+            # Если фото не отправилось - отправляем хотя бы текст
+            print("⚠️ Отправляю только текст без фото")
+            send_telegram_message(caption, parse_mode)
+            return False
+                
+    except Exception as e:
+        print(f"✗ Ошибка при отправке фото в Telegram: {e}")
+        traceback.print_exc()
+        # В случае ошибки отправляем хотя бы текст
+        print("⚠️ Отправляю только текст без фото")
+        send_telegram_message(caption, parse_mode)
+        return False
+
+def get_random_image_url():
+    """Возвращает случайный URL картинки из GitHub"""
+    random_image = random.choice(IMAGE_FILES)
+    return GITHUB_IMAGES_URL + random_image
 
 def extract_tldr_from_answer(answer):
     """Извлекает только TLDR часть из ответа"""
@@ -454,6 +456,8 @@ def save_full_report_to_file(results, filename='full_report.txt'):
     except Exception as e:
         print(f"✗ Ошибка сохранения полного отчета: {e}")
         return None
+
+def save_to_json(data, filename='cmc_full_data.json'):
     """Сохраняет данные в JSON файл"""
     try:
         with open(filename, 'w', encoding='utf-8') as f:
@@ -526,8 +530,6 @@ async def main_parser():
             )
 
             page = await context.new_page()
-
-            # Убрали стартовое сообщение в Telegram
 
             for attempt in range(3):
                 try:
