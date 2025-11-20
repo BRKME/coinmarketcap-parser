@@ -1,1 +1,65 @@
+name: Parse News (Every 8 hours)
 
+on:
+  schedule:
+    # Запуск каждые 8 часов: 00:00, 08:00, 16:00 UTC
+    - cron: '0 0,8,16 * * *'
+  workflow_dispatch:
+
+jobs:
+  parse-news:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        python -m playwright install chromium
+        
+    - name: Run parser (PARSE MODE)
+      timeout-minutes: 30
+      env:
+        MODE: parse
+      run: python parser.py
+        
+    - name: Check generated files
+      run: |
+        echo "📁 Проверка созданных файлов:"
+        ls -la
+        echo "📊 Файл очереди новостей:"
+        cat news_queue.json 2>/dev/null || echo "Очередь не создана"
+        
+    - name: Upload news queue
+      uses: actions/upload-artifact@v4
+      with:
+        name: news-queue-${{ github.run_id }}
+        path: |
+          news_queue.json
+          cmc_full_data.json
+          cmc_questions_answers.csv
+          full_report.txt
+        retention-days: 1
+        if-no-files-found: warn
+    
+    - name: Commit news queue to repository
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add news_queue.json
+        git commit -m "📦 Update news queue - $(date '+%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+        git push || echo "Nothing to push"
+        
+    - name: Show workflow info
+      if: always()
+      run: |
+        echo "✅ Парсинг завершен"
+        echo "📦 Создана очередь новостей"
+        echo "⏰ Следующий парсинг через 8 часов"
