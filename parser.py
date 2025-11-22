@@ -1,3 +1,63 @@
+def send_telegram_message(message, parse_mode='HTML'):
+    """Отправляет сообщение в Telegram с разбивкой на части при необходимости"""
+    try:
+        max_length = 4000
+        
+        if len(message) <= max_length:
+            url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+            payload = {
+                'chat_id': TELEGRAM_CHAT_ID,
+                'text': message,
+                'parse_mode': parse_mode
+            }
+            response = requests.post(url, data=payload, timeout=10)
+            if response.status_code == 200:
+                print("✓ Сообщение отправлено в Telegram")
+                return True
+            else:
+                print(f"✗ Ошибка отправки в Telegram: {response.status_code}")
+                print(f"Ответ: {response.text}")
+                return False
+        else:
+            # Разбиваем длинное сообщение
+            print(f"📨 Сообщение длинное ({len(message)} chars), разбиваю на части...")
+            parts = []
+            current_part = ""
+            
+            for line in message.split('\n'):
+                if len(current_part) + len(line) + 1 > max_length:
+                    if current_part:
+                        parts.append(current_part)
+                        current_part = line
+                    else:
+                        # Строка слишком длинная - режем по символам
+                        for i in range(0, len(line), max_length - 100):
+                            parts.append(line[i:i + max_length - 100])
+                else:
+                    current_part = current_part + "\n" + line if current_part else line
+            
+            if current_part:
+                parts.append(current_part)
+            
+            # Отправляем части
+            for i, part in enumerate(parts, 1):
+                url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+                payload = {
+                    'chat_id': TELEGRAM_CHAT_ID,
+                    'text': part,
+                    'parse_mode': parse_mode
+                }
+                response = requests.post(url, data=payload, timeout=10)
+                print(f"  ✓ Часть {i}/{len(parts)} отправлена")
+                time.sleep(0.5)  # Небольшая пауза между частями
+            
+            return True
+            
+    except Exception as e:
+        print(f"✗ Ошибка при отправке в Telegram: {e}")
+        traceback.print_exc()
+        return False
+
 def extract_tldr_from_answer(answer):
     """Извлекает только TLDR часть из ответа и очищает от лишнего текста"""
     try:
@@ -51,63 +111,6 @@ def clean_question_specific_text(question, text):
         print(f"⚠️ Ошибка очистки текста: {e}")
         return text
 
-def send_telegram_photo_with_caption(photo_url, caption, parse_mode='HTML'):
-    """Отправляет фото с подписью в Telegram"""
-    try:
-        url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendPhoto"
-        
-        print(f"🔍 Попытка отправить фото: {photo_url}")
-        print(f"📏 Длина caption: {len(caption)} символов")
-        
-        # Отправляем фото с подписью
-        payload = {
-            'chat_id': TELEGRAM_CHAT_ID,
-            'photo': photo_url,
-            'caption': caption,
-            'parse_mode': parse_mode
-        }
-        
-        # Если текст слишком длинный для caption (лимит 1024 символа)
-        if len(caption) > 1020:
-            # Отправляем фото без подписи
-            payload = {
-                'chat_id': TELEGRAM_CHAT_ID,
-                'photo': photo_url
-            }
-            response = requests.post(url, data=payload, timeout=30)
-            
-            print(f"📊 Response status: {response.status_code}")
-            
-            if response.status_code == 200:
-                print("✓ Фото отправлено в Telegram")
-                # Ждем немного и отправляем текст отдельным сообщением
-                time.sleep(1)
-                send_telegram_message(caption, parse_mode)
-                return True
-        else:
-            # Отправляем фото с подписью вместе
-            response = requests.post(url, data=payload, timeout=30)
-            
-            print(f"📊 Response status: {response.status_code}")
-            
-            if response.status_code == 200:
-                print("✓ Фото с подписью отправлено в Telegram")
-                return True
-            else:
-                print(f"✗ Ошибка отправки фото: {response.status_code} - {response.text}")
-                # Если фото не отправилось - отправляем хотя бы текст
-                print("⚠️ Отправляю только текст без фото")
-                send_telegram_message(caption, parse_mode)
-                return False
-                
-    except Exception as e:
-        print(f"✗ Ошибка при отправке фото в Telegram: {e}")
-        traceback.print_exc()
-        # В случае ошибки отправляем хотя бы текст
-        print("⚠️ Отправляю только текст без фото")
-        send_telegram_message(caption, parse_mode)
-        return False
-
 def send_question_answer_to_telegram(question_num, total_questions, question, answer):
     """Отправляет вопрос и TLDR в Telegram"""
     try:
@@ -125,7 +128,7 @@ def send_question_answer_to_telegram(question_num, total_questions, question, an
         print(f"\n📤 Отправка вопроса {question_num}/{total_questions} в Telegram...")
         print(f"📏 Длина текста: {len(tldr_text)} символов")
         
-        # Отправляем просто текст без фото
+        # Отправляем просто текст
         send_telegram_message(short_message)
         
         # Пауза между сообщениями
@@ -133,3 +136,25 @@ def send_question_answer_to_telegram(question_num, total_questions, question, an
         
     except Exception as e:
         print(f"✗ Ошибка при отправке вопроса {question_num}: {e}")
+        traceback.print_exc()
+
+def send_all_results_to_telegram(results):
+    """Отправляет все результаты в Telegram - каждый вопрос отдельным сообщением"""
+    try:
+        print("\n📤 Отправка результатов в Telegram...")
+        
+        # Отправляем каждый вопрос и ответ отдельным сообщением
+        total_questions = len(results)
+        for i, result in enumerate(results, 1):
+            send_question_answer_to_telegram(
+                question_num=i,
+                total_questions=total_questions,
+                question=result['question'],
+                answer=result['answer']
+            )
+        
+        print("✓ Все результаты отправлены в Telegram")
+        
+    except Exception as e:
+        print(f"✗ Ошибка при отправке результатов в Telegram: {e}")
+        traceback.print_exc()
