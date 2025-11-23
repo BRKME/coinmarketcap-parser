@@ -36,8 +36,8 @@ logger = logging.getLogger(__name__)
 MAX_RETRIES = int(os.getenv('MAX_RETRIES', '2'))
 
 # Telegram настройки
-TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN', '8323539910:AAG6DYij-FuqT7q-ovsBNNgEnWH2V6FXhoM')
-TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID', '-1003445906500')
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN') or '8323539910:AAG6DYij-FuqT7q-ovsBNNgEnWH2V6FXhoM'
+TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID') or '-1003445906500'
 
 # GitHub настройки для картинок
 GITHUB_IMAGES_URL = "https://raw.githubusercontent.com/BRKME/coinmarketcap-parser/main/Images1/"
@@ -190,7 +190,8 @@ def find_question_by_group(questions_list, group_name):
 def send_telegram_message(message, parse_mode='HTML'):
     """Отправляет сообщение в Telegram с разбивкой на части при необходимости"""
     try:
-        if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+        # Проверка на пустые значения
+        if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID or TELEGRAM_BOT_TOKEN.strip() == "" or TELEGRAM_CHAT_ID.strip() == "":
             logger.error("✗ Не заданы TELEGRAM_BOT_TOKEN или TELEGRAM_CHAT_ID")
             return False
         
