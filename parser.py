@@ -85,6 +85,42 @@ QUESTION_GROUPS = {
     "altcoins": ["Are altcoins outperforming Bitcoin?"]
 }
 
+# Маппинг вопросов на заголовки и хэштеги для Telegram
+QUESTION_DISPLAY_CONFIG = {
+    "What are KOLs discussing?": {
+        "title": "Crypto Insights",
+        "hashtags": "#CryptoTwitter #KOLs #Alpha"
+    },
+    "What is the market sentiment?": {
+        "title": "Daily Market Sentiment",
+        "hashtags": "#FearAndGreed #CryptoSentiment #Bitcoin"
+    },
+    "What upcoming events may impact crypto?": {
+        "title": "Upcoming Crypto Events",
+        "hashtags": "#CryptoEvents #CryptoCalendar"
+    },
+    "What cryptos are showing bullish momentum?": {
+        "title": "Bullish Crypto Watchlist",
+        "hashtags": "#Altseason #Bullish #CryptoGems"
+    },
+    "What are the trending narratives?": {
+        "title": "Trending Crypto Narratives",
+        "hashtags": "#CryptoNarratives #RWA #AIcrypto"
+    },
+    "Why is the market up today?": {
+        "title": "Market Analysis",
+        "hashtags": "#Bitcoin #CryptoMarket #BullRun"
+    },
+    "Why is the market down today?": {
+        "title": "Market Analysis",
+        "hashtags": "#Bitcoin #CryptoMarket #Correction"
+    },
+    "Are altcoins outperforming Bitcoin?": {
+        "title": "Altcoin Performance",
+        "hashtags": "#Altcoins #Bitcoin #AltcoinSeason"
+    }
+}
+
 def get_question_group(question_text):
     """Определяет к какой группе относится вопрос"""
     if not question_text:
@@ -350,14 +386,28 @@ def send_question_answer_to_telegram(question, answer):
             logger.error("✗ Пустой TLDR после обработки")
             return False
         
-        short_message = f"""<b>{question}</b>
+        # Получаем конфигурацию для отображения
+        display_config = QUESTION_DISPLAY_CONFIG.get(question, {
+            "title": "Crypto Update",
+            "hashtags": "#Crypto #Bitcoin"
+        })
+        
+        title = display_config["title"]
+        hashtags = display_config["hashtags"]
+        
+        # Форматируем сообщение БЕЗ вопроса, только заголовок + текст + хэштеги
+        short_message = f"""<b>{title}</b>
 
-{tldr_text}"""
+{tldr_text}
+
+{hashtags}"""
         
         image_url = get_random_image_url()
         
         logger.info(f"\n📤 Отправка в Telegram...")
+        logger.info(f"📋 Заголовок: {title}")
         logger.info(f"📏 Длина TLDR: {len(tldr_text)} символов")
+        logger.info(f"🏷 Хэштеги: {hashtags}")
         
         result = send_telegram_photo_with_caption(image_url, short_message)
         time.sleep(1)
