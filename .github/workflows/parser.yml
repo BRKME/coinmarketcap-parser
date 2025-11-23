@@ -40,7 +40,7 @@ jobs:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       run: |
-        python cmc_parser_v1_tested.py
+        python parser.py
     
     - name: Commit publication history
       if: always()
