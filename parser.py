@@ -41,7 +41,7 @@ TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID') or '-1003445906500'
 
 # GitHub настройки для картинок
 GITHUB_IMAGES_URL = "https://raw.githubusercontent.com/BRKME/coinmarketcap-parser/main/Images1/"
-IMAGE_FILES = [f"{i}.jpg" for i in range(10, 36)]
+IMAGE_FILES = [f"{i}.jpg" for i in range(10, 101)]  # 10.jpg до 100.jpg (91 картинка)
 
 # Расписание публикаций (час UTC : тип вопроса)
 SCHEDULE = {
