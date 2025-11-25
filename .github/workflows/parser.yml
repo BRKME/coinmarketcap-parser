@@ -27,7 +27,7 @@ jobs:
     - name: Install Python dependencies
       run: |
         pip install --upgrade pip
-        pip install playwright beautifulsoup4 requests
+        pip install playwright beautifulsoup4 requests tweepy
     
     - name: Install Playwright browsers
       run: |
@@ -39,6 +39,12 @@ jobs:
         MAX_RETRIES: 2
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+        TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+        TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+        TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+        TWITTER_BEARER_TOKEN: ${{ secrets.TWITTER_BEARER_TOKEN }}
+        TWITTER_ENABLED: ${{ vars.TWITTER_ENABLED || 'true' }}
       run: |
         python parser.py
     
@@ -48,6 +54,7 @@ jobs:
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add publication_history.json || true
+        git add error_counter.json || true
         git diff --quiet && git diff --staged --quiet || (git commit -m "📊 Update publication history [skip ci]" && git push) || true
       continue-on-error: true
     
@@ -59,5 +66,6 @@ jobs:
         path: |
           parser.log
           *.txt
+          *.json
         retention-days: 7
         if-no-files-found: ignore
