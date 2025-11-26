@@ -6,15 +6,16 @@
     "narratives": "2025-11-26T11:28:59.179948+00:00",
     "events": "2025-11-26T07:27:20.618589+00:00",
     "sentiment": "2025-11-26T09:31:57.063800+00:00",
-    "altcoins": "2025-11-26T13:39:57.646299+00:00"
+    "altcoins": "2025-11-26T13:39:57.646299+00:00",
+    "bullish": "2025-11-26T15:28:48.047795+00:00"
   },
   "last_dynamic_question": "Which crypto services halted in Cloudflare?",
   "dynamic_published_at": "2025-11-26T03:52:28.455791+00:00",
   "last_publication": {
-    "question": "Why is the market down today?",
-    "group": "market_direction",
-    "published_at": "2025-11-26T14:29:55.357181+00:00",
-    "hour_utc": 14,
-    "answer_length": 2621
+    "question": "What cryptos are showing bullish momentum?",
+    "group": "bullish",
+    "published_at": "2025-11-26T15:28:48.047811+00:00",
+    "hour_utc": 15,
+    "answer_length": 2392
   }
 }
