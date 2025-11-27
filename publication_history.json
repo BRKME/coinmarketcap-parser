@@ -2,7 +2,7 @@
   "last_published": {
     "kols": "2025-11-27T04:34:04.844992+00:00",
     "dynamic": "2025-11-27T09:31:36.141963+00:00",
-    "market_direction": "2025-11-27T06:42:16.112991+00:00",
+    "market_direction": "2025-11-27T10:32:17.079184+00:00",
     "narratives": "2025-11-26T23:26:09.961006+00:00",
     "events": "2025-11-26T19:21:41.185904+00:00",
     "sentiment": "2025-11-26T17:26:28.750458+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "How much derivatives open interest increased?",
   "dynamic_published_at": "2025-11-27T09:31:36.141936+00:00",
   "last_publication": {
-    "question": "How much derivatives open interest increased?",
-    "group": "DYNAMIC",
-    "published_at": "2025-11-27T09:31:36.141967+00:00",
-    "hour_utc": 9,
-    "answer_length": 3011
+    "question": "Why is the market up today?",
+    "group": "market_direction",
+    "published_at": "2025-11-27T10:32:17.079200+00:00",
+    "hour_utc": 10,
+    "answer_length": 2170
   }
 }
