@@ -6,16 +6,16 @@
     "narratives": "2025-11-26T23:26:09.961006+00:00",
     "events": "2025-11-26T19:21:41.185904+00:00",
     "sentiment": "2025-11-26T17:26:28.750458+00:00",
-    "altcoins": "2025-11-26T13:39:57.646299+00:00",
+    "altcoins": "2025-11-27T03:18:38.995417+00:00",
     "bullish": "2025-11-26T15:28:48.047795+00:00"
   },
   "last_dynamic_question": "How much USDC minted on SOL?",
   "dynamic_published_at": "2025-11-26T21:24:51.615789+00:00",
   "last_publication": {
-    "question": "Why is the market up today?",
-    "group": "market_direction",
-    "published_at": "2025-11-27T02:04:19.396684+00:00",
-    "hour_utc": 2,
-    "answer_length": 2142
+    "question": "Are altcoins outperforming Bitcoin?",
+    "group": "altcoins",
+    "published_at": "2025-11-27T03:18:38.995433+00:00",
+    "hour_utc": 3,
+    "answer_length": 2201
   }
 }
