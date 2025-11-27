@@ -2,7 +2,7 @@
   "last_published": {
     "kols": "2025-11-27T16:34:49.834392+00:00",
     "dynamic": "2025-11-27T15:29:26.855706+00:00",
-    "market_direction": "2025-11-27T14:28:41.867412+00:00",
+    "market_direction": "2025-11-27T18:37:44.444600+00:00",
     "narratives": "2025-11-27T11:25:33.118631+00:00",
     "events": "2025-11-26T19:21:41.185904+00:00",
     "sentiment": "2025-11-27T17:24:46.401434+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "Which majors led spot volumes today?",
   "dynamic_published_at": "2025-11-27T15:29:26.855689+00:00",
   "last_publication": {
-    "question": "What is the market sentiment?",
-    "group": "sentiment",
-    "published_at": "2025-11-27T17:24:46.401451+00:00",
-    "hour_utc": 17,
-    "answer_length": 2097
+    "question": "Why is the market up today?",
+    "group": "market_direction",
+    "published_at": "2025-11-27T18:37:44.444613+00:00",
+    "hour_utc": 18,
+    "answer_length": 2044
   }
 }
