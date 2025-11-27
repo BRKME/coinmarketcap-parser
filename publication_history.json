@@ -1,6 +1,6 @@
 {
   "last_published": {
-    "kols": "2025-11-27T04:34:04.844992+00:00",
+    "kols": "2025-11-27T12:58:14.245334+00:00",
     "dynamic": "2025-11-27T09:31:36.141963+00:00",
     "market_direction": "2025-11-27T10:32:17.079184+00:00",
     "narratives": "2025-11-27T11:25:33.118631+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "How much derivatives open interest increased?",
   "dynamic_published_at": "2025-11-27T09:31:36.141936+00:00",
   "last_publication": {
-    "question": "What are the trending narratives?",
-    "group": "narratives",
-    "published_at": "2025-11-27T11:25:33.118648+00:00",
-    "hour_utc": 11,
-    "answer_length": 2707
+    "question": "What are KOLs discussing?",
+    "group": "kols",
+    "published_at": "2025-11-27T12:58:14.245349+00:00",
+    "hour_utc": 12,
+    "answer_length": 2694
   }
 }
