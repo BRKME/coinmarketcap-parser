@@ -2,7 +2,7 @@
   "last_published": {
     "kols": "2025-11-27T20:28:32.274826+00:00",
     "dynamic": "2025-11-27T21:24:45.735185+00:00",
-    "market_direction": "2025-11-27T18:37:44.444600+00:00",
+    "market_direction": "2025-11-27T22:26:42.153941+00:00",
     "narratives": "2025-11-27T11:25:33.118631+00:00",
     "events": "2025-11-27T19:22:00.177647+00:00",
     "sentiment": "2025-11-27T17:24:46.401434+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "Which country launched a gold stablecoin?",
   "dynamic_published_at": "2025-11-27T21:24:45.735173+00:00",
   "last_publication": {
-    "question": "Which country launched a gold stablecoin?",
-    "group": "DYNAMIC",
-    "published_at": "2025-11-27T21:24:45.735189+00:00",
-    "hour_utc": 21,
-    "answer_length": 2577
+    "question": "Why is the market up today?",
+    "group": "market_direction",
+    "published_at": "2025-11-27T22:26:42.153957+00:00",
+    "hour_utc": 22,
+    "answer_length": 2172
   }
 }
