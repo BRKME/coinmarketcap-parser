@@ -1,7 +1,12 @@
 """
 formatting.py - Модуль улучшенного форматирования для Telegram и Twitter
-Version: 2.1.0
+Version: 2.2.0
 Senior QA Approved - Production Ready
+
+ИЗМЕНЕНИЯ v2.2.0:
+- Убрана линия разделителя в Telegram
+- Только 1 эмодзи в заголовке
+- Двойные пробелы между пунктами для читабельности
 
 ИСПОЛЬЗОВАНИЕ:
 1. Положите этот файл рядом с parser.py
@@ -20,7 +25,7 @@ logger = logging.getLogger(__name__)
 # ВЕРСИЯ
 # ========================================
 
-__version__ = "2.1.0"
+__version__ = "2.2.0"
 
 # ========================================
 # КОНСТАНТЫ
@@ -39,7 +44,7 @@ MIN_TWITTER_SPACE = 50
 MAX_TWITTER_LENGTH = 280
 MAX_TELEGRAM_LENGTH = 4000
 
-# Эмодзи для заголовков
+# Эмодзи для заголовков (ТОЛЬКО ДЛЯ ЗАГОЛОВКА)
 TITLE_EMOJI_MAP = {
     "Crypto Insights": "💡",
     "Market Analysis": "📊",
@@ -50,7 +55,7 @@ TITLE_EMOJI_MAP = {
     "Altcoin Performance": "⚡"
 }
 
-# Контекстные паттерны
+# Контекстные паттерны (только для Twitter теперь)
 CONTEXT_PATTERNS = [
     ("bullish|rally|surge|pump|moon", "🚀", 1),
     ("bearish|dump|crash|decline|drop", "🐻", 1),
@@ -136,7 +141,10 @@ def detect_price_change_emoji(line):
 # ========================================
 
 def format_telegram_improved(title, text, hashtags):
-    """Улучшенное форматирование для Telegram"""
+    """
+    Улучшенное форматирование для Telegram
+    v2.2.0: Чистый формат без линий, с пробелами между пунктами
+    """
     start_time = time.time()
     
     try:
@@ -148,15 +156,11 @@ def format_telegram_improved(title, text, hashtags):
             logger.warning("⚠️ Пустой текст после санитизации")
             return f"<b>{title}</b>\n\n{hashtags}"
         
+        # ТОЛЬКО эмодзи заголовка (БЕЗ контекстных)
         emoji = TITLE_EMOJI_MAP.get(title, "📰")
-        context_emojis = get_context_emojis(text, max_count=2)
+        header = f"{emoji} <b>{title}</b>"
         
-        if context_emojis:
-            emoji_string = " ".join(context_emojis)
-            header = f"{emoji} <b>{title}</b> {emoji_string}"
-        else:
-            header = f"{emoji} <b>{title}</b>"
-        
+        # Обработка текста построчно
         lines = text.split('\n')
         processed = []
         line_count = 0
@@ -172,19 +176,25 @@ def format_telegram_improved(title, text, hashtags):
             
             line_count += 1
             
+            # Криптовалюты с процентами
             if CRYPTO_PRICE_PATTERN.match(line):
                 price_emoji = detect_price_change_emoji(line)
-                processed.append(f"  {price_emoji} {line}")
+                processed.append(f"{price_emoji} {line}")
+            # Пункты списка
             elif LIST_ITEM_PATTERN.match(line):
                 clean = LIST_ITEM_PATTERN.sub('', line)
-                processed.append(f"  • {clean}")
+                processed.append(f"• {clean}")
+            # Заголовки разделов
             elif line.endswith((':','–','—')) and len(line) < 50:
-                processed.append(f"\n<b>{line}</b>")
+                processed.append(f"<b>{line}</b>")
             else:
                 processed.append(line)
         
-        formatted = '\n'.join(processed)
-        message = f"{header}\n━━━━━━━━━━━━━━━━\n\n{formatted}"
+        # ДВОЙНЫЕ переносы между пунктами для читабельности
+        formatted = '\n\n'.join(processed)
+        
+        # Формируем финальное сообщение (БЕЗ линии)
+        message = f"{header}\n\n{formatted}"
         
         if hashtags:
             message += f"\n\n{hashtags}"
@@ -325,19 +335,6 @@ def send_improved(question, answer,
                  send_twitter_fn, twitter_enabled, twitter_keys):
     """
     Главная функция для отправки контента
-    
-    Args:
-        question: Вопрос
-        answer: Ответ AI
-        extract_tldr_fn: Функция извлечения TLDR
-        clean_text_fn: Функция очистки текста
-        config_dict: Словарь конфигурации
-        get_image_fn: Функция получения картинки
-        send_tg_photo_fn: Функция отправки фото в TG
-        send_tg_msg_fn: Функция отправки текста в TG
-        send_twitter_fn: Функция отправки в Twitter
-        twitter_enabled: Twitter включен?
-        twitter_keys: Кортеж (API_KEY, API_SECRET, TOKEN, TOKEN_SECRET)
     """
     total_start = time.time()
     
