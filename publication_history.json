@@ -2,7 +2,7 @@
   "last_published": {
     "kols": "2025-11-27T20:28:32.274826+00:00",
     "dynamic": "2025-11-27T21:24:45.735185+00:00",
-    "market_direction": "2025-11-27T22:26:42.153941+00:00",
+    "market_direction": "2025-11-28T02:04:18.894992+00:00",
     "narratives": "2025-11-27T23:25:58.405959+00:00",
     "events": "2025-11-27T19:22:00.177647+00:00",
     "sentiment": "2025-11-27T17:24:46.401434+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "Which country launched a gold stablecoin?",
   "dynamic_published_at": "2025-11-27T21:24:45.735173+00:00",
   "last_publication": {
-    "question": "What are the trending narratives?",
-    "group": "narratives",
-    "published_at": "2025-11-27T23:25:58.405972+00:00",
-    "hour_utc": 23,
-    "answer_length": 2429
+    "question": "Why is the market up today?",
+    "group": "market_direction",
+    "published_at": "2025-11-28T02:04:18.895009+00:00",
+    "hour_utc": 2,
+    "answer_length": 2391
   }
 }
