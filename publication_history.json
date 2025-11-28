@@ -1,6 +1,6 @@
 {
   "last_published": {
-    "kols": "2025-11-28T16:34:26.823822+00:00",
+    "kols": "2025-11-28T20:30:21.856923+00:00",
     "dynamic": "2025-11-28T15:48:12.043322+00:00",
     "market_direction": "2025-11-28T18:38:02.174368+00:00",
     "narratives": "2025-11-28T11:24:45.282030+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "What Fed signals moved BTC?",
   "dynamic_published_at": "2025-11-28T15:48:12.043297+00:00",
   "last_publication": {
-    "question": "What upcoming events may impact crypto?",
-    "group": "events",
-    "published_at": "2025-11-28T19:22:31.075363+00:00",
-    "hour_utc": 19,
-    "answer_length": 2896
+    "question": "What are KOLs discussing?",
+    "group": "kols",
+    "published_at": "2025-11-28T20:30:21.856939+00:00",
+    "hour_utc": 20,
+    "answer_length": 2484
   }
 }
