@@ -1,6 +1,6 @@
 {
   "last_published": {
-    "kols": "2025-11-29T16:32:48.463896+00:00",
+    "kols": "2025-11-29T20:29:56.638665+00:00",
     "dynamic": "2025-11-29T15:26:09.969521+00:00",
     "market_direction": "2025-11-29T18:36:54.586091+00:00",
     "narratives": "2025-11-29T11:22:21.696253+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "Which sectors led the market today?",
   "dynamic_published_at": "2025-11-29T15:26:09.969504+00:00",
   "last_publication": {
-    "question": "What upcoming events may impact crypto?",
-    "group": "events",
-    "published_at": "2025-11-29T19:21:54.037189+00:00",
-    "hour_utc": 19,
-    "answer_length": 3052
+    "question": "What are KOLs discussing?",
+    "group": "kols",
+    "published_at": "2025-11-29T20:29:56.638680+00:00",
+    "hour_utc": 20,
+    "answer_length": 2504
   }
 }
