@@ -1,6 +1,6 @@
 {
   "last_published": {
-    "kols": "2025-11-28T20:30:21.856923+00:00",
+    "kols": "2025-11-29T04:32:37.989827+00:00",
     "dynamic": "2025-11-29T03:18:39.461058+00:00",
     "market_direction": "2025-11-29T02:03:51.595737+00:00",
     "narratives": "2025-11-28T23:25:53.181679+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "How much USDC minted on SOL?",
   "dynamic_published_at": "2025-11-29T03:18:39.461039+00:00",
   "last_publication": {
-    "question": "How much USDC minted on SOL?",
-    "group": "DYNAMIC",
-    "published_at": "2025-11-29T03:18:39.461062+00:00",
-    "hour_utc": 3,
-    "answer_length": 2856
+    "question": "What are KOLs discussing?",
+    "group": "kols",
+    "published_at": "2025-11-29T04:32:37.989846+00:00",
+    "hour_utc": 4,
+    "answer_length": 2553
   }
 }
