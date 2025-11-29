@@ -2,7 +2,7 @@
   "last_published": {
     "kols": "2025-11-29T16:32:48.463896+00:00",
     "dynamic": "2025-11-29T15:26:09.969521+00:00",
-    "market_direction": "2025-11-29T14:25:10.319003+00:00",
+    "market_direction": "2025-11-29T18:36:54.586091+00:00",
     "narratives": "2025-11-29T11:22:21.696253+00:00",
     "events": "2025-11-29T07:25:45.813993+00:00",
     "sentiment": "2025-11-29T17:23:58.679243+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "Which sectors led the market today?",
   "dynamic_published_at": "2025-11-29T15:26:09.969504+00:00",
   "last_publication": {
-    "question": "What is the market sentiment?",
-    "group": "sentiment",
-    "published_at": "2025-11-29T17:23:58.679259+00:00",
-    "hour_utc": 17,
-    "answer_length": 2200
+    "question": "Why is the market down today?",
+    "group": "market_direction",
+    "published_at": "2025-11-29T18:36:54.586107+00:00",
+    "hour_utc": 18,
+    "answer_length": 1997
   }
 }
