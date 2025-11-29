@@ -1,7 +1,7 @@
 {
   "last_published": {
     "kols": "2025-11-29T20:29:56.638665+00:00",
-    "dynamic": "2025-11-29T15:26:09.969521+00:00",
+    "dynamic": "2025-11-29T21:24:19.741590+00:00",
     "market_direction": "2025-11-29T18:36:54.586091+00:00",
     "narratives": "2025-11-29T11:22:21.696253+00:00",
     "events": "2025-11-29T19:21:54.037176+00:00",
@@ -9,13 +9,13 @@
     "altcoins": "2025-11-29T13:33:01.302559+00:00",
     "bullish": "2025-11-29T05:28:14.169668+00:00"
   },
-  "last_dynamic_question": "Which sectors led the market today?",
-  "dynamic_published_at": "2025-11-29T15:26:09.969504+00:00",
+  "last_dynamic_question": "What changed in USDT stability rating?",
+  "dynamic_published_at": "2025-11-29T21:24:19.741574+00:00",
   "last_publication": {
-    "question": "What are KOLs discussing?",
-    "group": "kols",
-    "published_at": "2025-11-29T20:29:56.638680+00:00",
-    "hour_utc": 20,
-    "answer_length": 2504
+    "question": "What changed in USDT stability rating?",
+    "group": "DYNAMIC",
+    "published_at": "2025-11-29T21:24:19.741594+00:00",
+    "hour_utc": 21,
+    "answer_length": 2803
   }
 }
