@@ -1,6 +1,6 @@
 {
   "last_published": {
-    "kols": "2025-11-29T20:29:56.638665+00:00",
+    "kols": "2025-11-30T02:24:24.452065+00:00",
     "dynamic": "2025-11-29T21:24:19.741590+00:00",
     "market_direction": "2025-11-29T22:26:36.738394+00:00",
     "narratives": "2025-11-29T23:25:46.006780+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "What changed in USDT stability rating?",
   "dynamic_published_at": "2025-11-29T21:24:19.741574+00:00",
   "last_publication": {
-    "question": "What are the trending narratives?",
-    "group": "narratives",
-    "published_at": "2025-11-29T23:25:46.006795+00:00",
-    "hour_utc": 23,
-    "answer_length": 2489
+    "question": "What are KOLs discussing?",
+    "group": "kols",
+    "published_at": "2025-11-30T02:24:24.452084+00:00",
+    "hour_utc": 2,
+    "answer_length": 2540
   }
 }
