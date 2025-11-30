@@ -1,7 +1,7 @@
 {
   "last_published": {
     "kols": "2025-11-30T08:33:14.351917+00:00",
-    "dynamic": "2025-11-29T21:24:19.741590+00:00",
+    "dynamic": "2025-11-30T09:26:38.001153+00:00",
     "market_direction": "2025-11-30T06:40:32.405435+00:00",
     "narratives": "2025-11-29T23:25:46.006780+00:00",
     "events": "2025-11-30T07:25:10.501140+00:00",
@@ -9,13 +9,13 @@
     "altcoins": "2025-11-29T13:33:01.302559+00:00",
     "bullish": "2025-11-30T05:28:21.458140+00:00"
   },
-  "last_dynamic_question": "What changed in USDT stability rating?",
-  "dynamic_published_at": "2025-11-29T21:24:19.741574+00:00",
+  "last_dynamic_question": "Which tokens were stolen at Upbit?",
+  "dynamic_published_at": "2025-11-30T09:26:38.001138+00:00",
   "last_publication": {
-    "question": "What are KOLs discussing?",
-    "group": "kols",
-    "published_at": "2025-11-30T08:33:14.351933+00:00",
-    "hour_utc": 8,
-    "answer_length": 2681
+    "question": "Which tokens were stolen at Upbit?",
+    "group": "DYNAMIC",
+    "published_at": "2025-11-30T09:26:38.001157+00:00",
+    "hour_utc": 9,
+    "answer_length": 2901
   }
 }
