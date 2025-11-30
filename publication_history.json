@@ -5,17 +5,17 @@
     "market_direction": "2025-11-30T14:25:03.618476+00:00",
     "narratives": "2025-11-29T23:25:46.006780+00:00",
     "events": "2025-11-30T07:25:10.501140+00:00",
-    "sentiment": "2025-11-29T17:23:58.679243+00:00",
+    "sentiment": "2025-11-30T17:23:55.138881+00:00",
     "altcoins": "2025-11-29T13:33:01.302559+00:00",
     "bullish": "2025-11-30T05:28:21.458140+00:00"
   },
   "last_dynamic_question": "How many BTC ETFs saw outflows?",
   "dynamic_published_at": "2025-11-30T15:26:09.488549+00:00",
   "last_publication": {
-    "question": "What are KOLs discussing?",
-    "group": "kols",
-    "published_at": "2025-11-30T16:33:04.084560+00:00",
-    "hour_utc": 16,
-    "answer_length": 2492
+    "question": "What is the market sentiment?",
+    "group": "sentiment",
+    "published_at": "2025-11-30T17:23:55.138899+00:00",
+    "hour_utc": 17,
+    "answer_length": 2314
   }
 }
