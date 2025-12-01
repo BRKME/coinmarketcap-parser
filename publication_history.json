@@ -2,7 +2,7 @@
   "last_published": {
     "kols": "2025-12-01T16:39:13.243653+00:00",
     "dynamic": "2025-12-01T15:32:09.244366+00:00",
-    "market_direction": "2025-12-01T14:31:42.738899+00:00",
+    "market_direction": "2025-12-01T18:46:06.312459+00:00",
     "narratives": "2025-12-01T11:26:27.123084+00:00",
     "events": "2025-12-01T07:30:57.086536+00:00",
     "sentiment": "2025-12-01T17:29:33.672206+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "Which BOJ signal pressured markets today?",
   "dynamic_published_at": "2025-12-01T15:32:09.244350+00:00",
   "last_publication": {
-    "question": "What is the market sentiment?",
-    "group": "sentiment",
-    "published_at": "2025-12-01T17:29:33.672222+00:00",
-    "hour_utc": 17,
-    "answer_length": 2200
+    "question": "Why is the market down today?",
+    "group": "market_direction",
+    "published_at": "2025-12-01T18:46:06.312478+00:00",
+    "hour_utc": 18,
+    "answer_length": 2325
   }
 }
