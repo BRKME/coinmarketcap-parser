@@ -2,7 +2,7 @@
   "last_published": {
     "kols": "2025-12-01T04:15:47.647411+00:00",
     "dynamic": "2025-11-30T21:24:50.862137+00:00",
-    "market_direction": "2025-12-01T02:33:20.679064+00:00",
+    "market_direction": "2025-12-01T06:46:10.366500+00:00",
     "narratives": "2025-11-30T23:25:38.164272+00:00",
     "events": "2025-11-30T19:22:34.963193+00:00",
     "sentiment": "2025-11-30T17:23:55.138881+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "Which firm is acquiring Upbit?",
   "dynamic_published_at": "2025-11-30T21:24:50.862120+00:00",
   "last_publication": {
-    "question": "What cryptos are showing bullish momentum?",
-    "group": "bullish",
-    "published_at": "2025-12-01T05:35:54.032062+00:00",
-    "hour_utc": 5,
-    "answer_length": 2568
+    "question": "Why is the market down today?",
+    "group": "market_direction",
+    "published_at": "2025-12-01T06:46:10.366515+00:00",
+    "hour_utc": 6,
+    "answer_length": 2416
   }
 }
