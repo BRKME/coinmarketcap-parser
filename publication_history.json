@@ -7,15 +7,15 @@
     "events": "2025-11-30T19:22:34.963193+00:00",
     "sentiment": "2025-11-30T17:23:55.138881+00:00",
     "altcoins": "2025-11-29T13:33:01.302559+00:00",
-    "bullish": "2025-11-30T05:28:21.458140+00:00"
+    "bullish": "2025-12-01T05:35:54.032046+00:00"
   },
   "last_dynamic_question": "Which firm is acquiring Upbit?",
   "dynamic_published_at": "2025-11-30T21:24:50.862120+00:00",
   "last_publication": {
-    "question": "What are KOLs discussing?",
-    "group": "kols",
-    "published_at": "2025-12-01T04:15:47.647425+00:00",
-    "hour_utc": 4,
-    "answer_length": 2446
+    "question": "What cryptos are showing bullish momentum?",
+    "group": "bullish",
+    "published_at": "2025-12-01T05:35:54.032062+00:00",
+    "hour_utc": 5,
+    "answer_length": 2568
   }
 }
