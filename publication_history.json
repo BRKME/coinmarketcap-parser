@@ -2,7 +2,7 @@
   "last_published": {
     "kols": "2025-12-01T08:41:33.851349+00:00",
     "dynamic": "2025-12-01T09:37:45.089636+00:00",
-    "market_direction": "2025-12-01T06:46:10.366500+00:00",
+    "market_direction": "2025-12-01T10:34:21.789854+00:00",
     "narratives": "2025-11-30T23:25:38.164272+00:00",
     "events": "2025-12-01T07:30:57.086536+00:00",
     "sentiment": "2025-11-30T17:23:55.138881+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "Which sectors led the selloff?",
   "dynamic_published_at": "2025-12-01T09:37:45.089620+00:00",
   "last_publication": {
-    "question": "Which sectors led the selloff?",
-    "group": "DYNAMIC",
-    "published_at": "2025-12-01T09:37:45.089641+00:00",
-    "hour_utc": 9,
-    "answer_length": 3657
+    "question": "Why is the market down today?",
+    "group": "market_direction",
+    "published_at": "2025-12-01T10:34:21.789871+00:00",
+    "hour_utc": 10,
+    "answer_length": 2258
   }
 }
