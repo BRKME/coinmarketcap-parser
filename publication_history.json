@@ -1,6 +1,6 @@
 {
   "last_published": {
-    "kols": "2025-12-02T10:33:09.599100+00:00",
+    "kols": "2025-12-02T16:39:43.542866+00:00",
     "dynamic": "2025-12-02T09:35:28.940379+00:00",
     "market_direction": "2025-12-02T14:38:19.389445+00:00",
     "narratives": "2025-12-02T11:27:49.789899+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "Which agency proposed stablecoin rules?",
   "dynamic_published_at": "2025-12-02T09:35:28.940365+00:00",
   "last_publication": {
-    "question": "Why is the market up today?",
-    "group": "market_direction",
-    "published_at": "2025-12-02T14:38:19.389463+00:00",
-    "hour_utc": 14,
-    "answer_length": 2589
+    "question": "What are KOLs discussing?",
+    "group": "kols",
+    "published_at": "2025-12-02T16:39:43.542882+00:00",
+    "hour_utc": 16,
+    "answer_length": 2680
   }
 }
