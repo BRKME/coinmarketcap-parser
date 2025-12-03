@@ -7,15 +7,15 @@
     "events": "2025-12-02T19:26:44.778029+00:00",
     "sentiment": "2025-12-02T17:30:21.341646+00:00",
     "altcoins": "2025-12-02T13:42:09.168366+00:00",
-    "bullish": "2025-12-02T05:28:52.623721+00:00"
+    "bullish": "2025-12-03T05:29:05.622616+00:00"
   },
   "last_dynamic_question": "Which ETFs led flows today?",
   "dynamic_published_at": "2025-12-03T03:55:14.357456+00:00",
   "last_publication": {
-    "question": "What are KOLs discussing?",
-    "group": "kols",
-    "published_at": "2025-12-03T04:36:30.875171+00:00",
-    "hour_utc": 4,
-    "answer_length": 2348
+    "question": "What cryptos are showing bullish momentum?",
+    "group": "bullish",
+    "published_at": "2025-12-03T05:29:05.622642+00:00",
+    "hour_utc": 5,
+    "answer_length": 2680
   }
 }
