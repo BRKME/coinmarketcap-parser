@@ -1,6 +1,6 @@
 {
   "last_published": {
-    "kols": "2025-12-03T16:39:48.634095+00:00",
+    "kols": "2025-12-03T20:33:52.777098+00:00",
     "dynamic": "2025-12-03T09:33:12.953765+00:00",
     "market_direction": "2025-12-03T18:43:20.321882+00:00",
     "narratives": "2025-12-03T11:27:10.012020+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "Which ETFs led net flows today?",
   "dynamic_published_at": "2025-12-03T09:33:12.953749+00:00",
   "last_publication": {
-    "question": "What upcoming events may impact crypto?",
-    "group": "events",
-    "published_at": "2025-12-03T19:25:01.829814+00:00",
-    "hour_utc": 19,
-    "answer_length": 2625
+    "question": "What are KOLs discussing?",
+    "group": "kols",
+    "published_at": "2025-12-03T20:33:52.777114+00:00",
+    "hour_utc": 20,
+    "answer_length": 2638
   }
 }
