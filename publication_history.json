@@ -2,7 +2,7 @@
   "last_published": {
     "kols": "2025-12-03T04:36:30.875155+00:00",
     "dynamic": "2025-12-03T03:55:14.357472+00:00",
-    "market_direction": "2025-12-03T02:08:53.910335+00:00",
+    "market_direction": "2025-12-03T06:43:09.563588+00:00",
     "narratives": "2025-12-02T23:26:47.470049+00:00",
     "events": "2025-12-02T19:26:44.778029+00:00",
     "sentiment": "2025-12-02T17:30:21.341646+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "Which ETFs led flows today?",
   "dynamic_published_at": "2025-12-03T03:55:14.357456+00:00",
   "last_publication": {
-    "question": "What cryptos are showing bullish momentum?",
-    "group": "bullish",
-    "published_at": "2025-12-03T05:29:05.622642+00:00",
-    "hour_utc": 5,
-    "answer_length": 2680
+    "question": "Why is the market up today?",
+    "group": "market_direction",
+    "published_at": "2025-12-03T06:43:09.563605+00:00",
+    "hour_utc": 6,
+    "answer_length": 2166
   }
 }
