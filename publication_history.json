@@ -1,7 +1,7 @@
 {
   "last_published": {
     "kols": "2025-12-03T20:53:44.800221+00:00",
-    "dynamic": "2025-12-03T21:25:05.085126+00:00",
+    "dynamic": "2025-12-04T03:56:31.716371+00:00",
     "market_direction": "2025-12-04T02:09:48.520350+00:00",
     "narratives": "2025-12-03T23:25:33.592374+00:00",
     "events": "2025-12-03T19:25:01.829797+00:00",
@@ -9,13 +9,13 @@
     "altcoins": "2025-12-03T13:41:25.551669+00:00",
     "bullish": "2025-12-03T05:29:05.622616+00:00"
   },
-  "last_dynamic_question": "Which DEX added WBTC bridging?",
-  "dynamic_published_at": "2025-12-03T21:25:05.085111+00:00",
+  "last_dynamic_question": "What changed in ETH Fusaka upgrade?",
+  "dynamic_published_at": "2025-12-04T03:56:31.716354+00:00",
   "last_publication": {
-    "question": "Why is the market up today?",
-    "group": "market_direction",
-    "published_at": "2025-12-04T02:09:48.520374+00:00",
-    "hour_utc": 2,
-    "answer_length": 2353
+    "question": "What changed in ETH Fusaka upgrade?",
+    "group": "DYNAMIC",
+    "published_at": "2025-12-04T03:56:31.716376+00:00",
+    "hour_utc": 3,
+    "answer_length": 3103
   }
 }
