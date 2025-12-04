@@ -3,7 +3,7 @@
     "kols": "2025-12-04T08:39:26.538454+00:00",
     "dynamic": "2025-12-04T03:56:31.716371+00:00",
     "market_direction": "2025-12-04T10:33:55.672692+00:00",
-    "narratives": "2025-12-03T23:25:33.592374+00:00",
+    "narratives": "2025-12-04T11:27:44.099323+00:00",
     "events": "2025-12-04T07:29:33.731037+00:00",
     "sentiment": "2025-12-03T17:30:05.008187+00:00",
     "altcoins": "2025-12-04T09:33:28.209604+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "What changed in ETH Fusaka upgrade?",
   "dynamic_published_at": "2025-12-04T03:56:31.716354+00:00",
   "last_publication": {
-    "question": "Why is the market up today?",
-    "group": "market_direction",
-    "published_at": "2025-12-04T10:33:55.672711+00:00",
-    "hour_utc": 10,
-    "answer_length": 2240
+    "question": "What are the trending narratives?",
+    "group": "narratives",
+    "published_at": "2025-12-04T11:27:44.099337+00:00",
+    "hour_utc": 11,
+    "answer_length": 2540
   }
 }
