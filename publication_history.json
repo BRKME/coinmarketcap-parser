@@ -1,6 +1,6 @@
 {
   "last_published": {
-    "kols": "2025-12-04T20:33:00.478170+00:00",
+    "kols": "2025-12-05T04:36:53.978570+00:00",
     "dynamic": "2025-12-05T03:55:27.970813+00:00",
     "market_direction": "2025-12-05T02:09:44.910196+00:00",
     "narratives": "2025-12-04T23:27:12.465749+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "Which SOL ETF stakes SOL?",
   "dynamic_published_at": "2025-12-05T03:55:27.970799+00:00",
   "last_publication": {
-    "question": "Which SOL ETF stakes SOL?",
-    "group": "DYNAMIC",
-    "published_at": "2025-12-05T03:55:27.970818+00:00",
-    "hour_utc": 3,
-    "answer_length": 2327
+    "question": "What are KOLs discussing?",
+    "group": "kols",
+    "published_at": "2025-12-05T04:36:53.978585+00:00",
+    "hour_utc": 4,
+    "answer_length": 2633
   }
 }
