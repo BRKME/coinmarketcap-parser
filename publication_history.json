@@ -3,7 +3,7 @@
     "kols": "2025-12-05T20:32:22.213799+00:00",
     "dynamic": "2025-12-05T21:26:32.245209+00:00",
     "market_direction": "2025-12-05T22:27:43.994437+00:00",
-    "narratives": "2025-12-05T11:26:35.629358+00:00",
+    "narratives": "2025-12-05T23:26:26.324683+00:00",
     "events": "2025-12-05T19:23:53.135098+00:00",
     "sentiment": "2025-12-05T17:27:20.840635+00:00",
     "altcoins": "2025-12-05T13:38:29.205024+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "How much were crypto liquidations?",
   "dynamic_published_at": "2025-12-05T21:26:32.245197+00:00",
   "last_publication": {
-    "question": "Why is the market down today?",
-    "group": "market_direction",
-    "published_at": "2025-12-05T22:27:43.994454+00:00",
-    "hour_utc": 22,
-    "answer_length": 2369
+    "question": "What are the trending narratives?",
+    "group": "narratives",
+    "published_at": "2025-12-05T23:26:26.324700+00:00",
+    "hour_utc": 23,
+    "answer_length": 2514
   }
 }
