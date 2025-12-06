@@ -2,7 +2,7 @@
   "last_published": {
     "kols": "2025-12-06T12:53:29.178081+00:00",
     "dynamic": "2025-12-06T15:26:02.179169+00:00",
-    "market_direction": "2025-12-06T14:24:56.631642+00:00",
+    "market_direction": "2025-12-06T18:36:38.307688+00:00",
     "narratives": "2025-12-06T11:22:21.931837+00:00",
     "events": "2025-12-06T07:25:53.821246+00:00",
     "sentiment": "2025-12-05T17:27:20.840635+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "Which SOL DEXs faced outages?",
   "dynamic_published_at": "2025-12-06T15:26:02.179152+00:00",
   "last_publication": {
-    "question": "Which SOL DEXs faced outages?",
-    "group": "DYNAMIC",
-    "published_at": "2025-12-06T15:26:02.179175+00:00",
-    "hour_utc": 15,
-    "answer_length": 2740
+    "question": "Why is the market up today?",
+    "group": "market_direction",
+    "published_at": "2025-12-06T18:36:38.307700+00:00",
+    "hour_utc": 18,
+    "answer_length": 2109
   }
 }
