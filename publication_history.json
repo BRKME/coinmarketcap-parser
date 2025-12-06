@@ -1,6 +1,6 @@
 {
   "last_published": {
-    "kols": "2025-12-05T20:32:22.213799+00:00",
+    "kols": "2025-12-06T04:31:29.900876+00:00",
     "dynamic": "2025-12-06T03:16:39.153965+00:00",
     "market_direction": "2025-12-06T02:03:21.766377+00:00",
     "narratives": "2025-12-05T23:26:26.324683+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "When is the options expiry today?",
   "dynamic_published_at": "2025-12-06T03:16:39.153949+00:00",
   "last_publication": {
-    "question": "When is the options expiry today?",
-    "group": "DYNAMIC",
-    "published_at": "2025-12-06T03:16:39.153971+00:00",
-    "hour_utc": 3,
-    "answer_length": 2508
+    "question": "What are KOLs discussing?",
+    "group": "kols",
+    "published_at": "2025-12-06T04:31:29.900893+00:00",
+    "hour_utc": 4,
+    "answer_length": 2323
   }
 }
