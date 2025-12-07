@@ -1,6 +1,6 @@
 {
   "last_published": {
-    "kols": "2025-12-06T20:29:17.500983+00:00",
+    "kols": "2025-12-07T02:25:02.784767+00:00",
     "dynamic": "2025-12-06T21:24:56.994308+00:00",
     "market_direction": "2025-12-06T22:26:22.778426+00:00",
     "narratives": "2025-12-06T23:26:07.732653+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "When is CFTC spot trading launch?",
   "dynamic_published_at": "2025-12-06T21:24:56.994293+00:00",
   "last_publication": {
-    "question": "What are the trending narratives?",
-    "group": "narratives",
-    "published_at": "2025-12-06T23:26:07.732669+00:00",
-    "hour_utc": 23,
-    "answer_length": 2539
+    "question": "What are KOLs discussing?",
+    "group": "kols",
+    "published_at": "2025-12-07T02:25:02.784782+00:00",
+    "hour_utc": 2,
+    "answer_length": 2842
   }
 }
