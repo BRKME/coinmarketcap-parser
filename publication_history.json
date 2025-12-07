@@ -2,7 +2,7 @@
   "last_published": {
     "kols": "2025-12-07T12:52:26.074206+00:00",
     "dynamic": "2025-12-07T09:26:52.919550+00:00",
-    "market_direction": "2025-12-06T22:26:22.778426+00:00",
+    "market_direction": "2025-12-07T14:25:02.380948+00:00",
     "narratives": "2025-12-07T11:21:46.589329+00:00",
     "events": "2025-12-07T07:26:00.610670+00:00",
     "sentiment": "2025-12-05T17:27:20.840635+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "How does Base Solana bridge work?",
   "dynamic_published_at": "2025-12-07T09:26:52.919536+00:00",
   "last_publication": {
-    "question": "Are altcoins outperforming Bitcoin?",
-    "group": "altcoins",
-    "published_at": "2025-12-07T13:31:41.369272+00:00",
-    "hour_utc": 13,
-    "answer_length": 1983
+    "question": "Why is the market down today?",
+    "group": "market_direction",
+    "published_at": "2025-12-07T14:25:02.380964+00:00",
+    "hour_utc": 14,
+    "answer_length": 1894
   }
 }
