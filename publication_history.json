@@ -7,15 +7,15 @@
     "events": "2025-12-07T19:21:46.323024+00:00",
     "sentiment": "2025-12-07T17:22:59.177410+00:00",
     "altcoins": "2025-12-07T13:31:41.369258+00:00",
-    "bullish": "2025-12-07T05:27:07.615051+00:00"
+    "bullish": "2025-12-08T05:31:52.749681+00:00"
   },
   "last_dynamic_question": "Which brokers added crypto ETFs?",
   "dynamic_published_at": "2025-12-08T03:59:45.090186+00:00",
   "last_publication": {
-    "question": "What are KOLs discussing?",
-    "group": "kols",
-    "published_at": "2025-12-08T04:40:16.996968+00:00",
-    "hour_utc": 4,
-    "answer_length": 2660
+    "question": "What cryptos are showing bullish momentum?",
+    "group": "bullish",
+    "published_at": "2025-12-08T05:31:52.749698+00:00",
+    "hour_utc": 5,
+    "answer_length": 2575
   }
 }
