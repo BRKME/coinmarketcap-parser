@@ -2,7 +2,7 @@
   "last_published": {
     "kols": "2025-12-08T08:41:27.328023+00:00",
     "dynamic": "2025-12-08T09:37:20.272966+00:00",
-    "market_direction": "2025-12-08T06:47:38.038364+00:00",
+    "market_direction": "2025-12-08T10:34:08.175436+00:00",
     "narratives": "2025-12-07T23:25:30.292868+00:00",
     "events": "2025-12-08T07:31:33.545975+00:00",
     "sentiment": "2025-12-07T17:22:59.177410+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "How much BTC ETF net outflow?",
   "dynamic_published_at": "2025-12-08T09:37:20.272950+00:00",
   "last_publication": {
-    "question": "How much BTC ETF net outflow?",
-    "group": "DYNAMIC",
-    "published_at": "2025-12-08T09:37:20.272971+00:00",
-    "hour_utc": 9,
-    "answer_length": 2779
+    "question": "Why is the market up today?",
+    "group": "market_direction",
+    "published_at": "2025-12-08T10:34:08.175452+00:00",
+    "hour_utc": 10,
+    "answer_length": 2195
   }
 }
