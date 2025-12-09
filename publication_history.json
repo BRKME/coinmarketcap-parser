@@ -4,7 +4,7 @@
     "dynamic": "2025-12-09T03:54:56.726655+00:00",
     "market_direction": "2025-12-09T06:43:47.153661+00:00",
     "narratives": "2025-12-08T23:27:11.753236+00:00",
-    "events": "2025-12-08T19:25:16.290281+00:00",
+    "events": "2025-12-09T07:29:51.425560+00:00",
     "sentiment": "2025-12-07T17:22:59.177410+00:00",
     "altcoins": "2025-12-08T13:40:23.368843+00:00",
     "bullish": "2025-12-09T05:30:05.658044+00:00"
@@ -12,10 +12,10 @@
   "last_dynamic_question": "What changed BTC ETF flows today?",
   "dynamic_published_at": "2025-12-09T03:54:56.726640+00:00",
   "last_publication": {
-    "question": "Why is the market down today?",
-    "group": "market_direction",
-    "published_at": "2025-12-09T06:43:47.153676+00:00",
-    "hour_utc": 6,
-    "answer_length": 2526
+    "question": "What upcoming events may impact crypto?",
+    "group": "events",
+    "published_at": "2025-12-09T07:29:51.425576+00:00",
+    "hour_utc": 7,
+    "answer_length": 3016
   }
 }
