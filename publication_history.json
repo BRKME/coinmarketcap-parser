@@ -6,7 +6,7 @@
     "narratives": "2025-12-09T11:27:25.677442+00:00",
     "events": "2025-12-09T07:29:51.425560+00:00",
     "sentiment": "2025-12-07T17:22:59.177410+00:00",
-    "altcoins": "2025-12-09T13:01:33.576676+00:00",
+    "altcoins": "2025-12-09T13:41:30.161870+00:00",
     "bullish": "2025-12-09T05:30:05.658044+00:00"
   },
   "last_dynamic_question": "What changed BTC ETF flows today?",
@@ -14,8 +14,8 @@
   "last_publication": {
     "question": "Are altcoins outperforming Bitcoin?",
     "group": "altcoins",
-    "published_at": "2025-12-09T13:01:33.576692+00:00",
+    "published_at": "2025-12-09T13:41:30.161888+00:00",
     "hour_utc": 13,
-    "answer_length": 2316
+    "answer_length": 2263
   }
 }
