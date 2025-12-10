@@ -1,6 +1,6 @@
 {
   "last_published": {
-    "kols": "2025-12-10T16:38:07.246026+00:00",
+    "kols": "2025-12-10T20:34:31.978305+00:00",
     "dynamic": "2025-12-10T15:34:08.582159+00:00",
     "market_direction": "2025-12-10T18:41:45.885641+00:00",
     "narratives": "2025-12-10T11:27:28.371390+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "Which bank enabled BTC trading?",
   "dynamic_published_at": "2025-12-10T15:34:08.582144+00:00",
   "last_publication": {
-    "question": "What upcoming events may impact crypto?",
-    "group": "events",
-    "published_at": "2025-12-10T19:26:06.045458+00:00",
-    "hour_utc": 19,
-    "answer_length": 2980
+    "question": "What are KOLs discussing?",
+    "group": "kols",
+    "published_at": "2025-12-10T20:34:31.978324+00:00",
+    "hour_utc": 20,
+    "answer_length": 2738
   }
 }
