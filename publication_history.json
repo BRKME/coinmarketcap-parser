@@ -5,17 +5,17 @@
     "market_direction": "2025-12-10T14:32:08.154348+00:00",
     "narratives": "2025-12-10T11:27:28.371390+00:00",
     "events": "2025-12-10T07:30:26.628270+00:00",
-    "sentiment": "2025-12-09T17:28:28.353378+00:00",
+    "sentiment": "2025-12-10T17:31:03.531049+00:00",
     "altcoins": "2025-12-10T13:42:49.544126+00:00",
     "bullish": "2025-12-10T05:30:47.131808+00:00"
   },
   "last_dynamic_question": "Which bank enabled BTC trading?",
   "dynamic_published_at": "2025-12-10T15:34:08.582144+00:00",
   "last_publication": {
-    "question": "What are KOLs discussing?",
-    "group": "kols",
-    "published_at": "2025-12-10T16:38:07.246045+00:00",
-    "hour_utc": 16,
-    "answer_length": 2674
+    "question": "What is the market sentiment?",
+    "group": "sentiment",
+    "published_at": "2025-12-10T17:31:03.531075+00:00",
+    "hour_utc": 17,
+    "answer_length": 2218
   }
 }
