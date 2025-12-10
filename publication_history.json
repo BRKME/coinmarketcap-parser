@@ -1,7 +1,7 @@
 {
   "last_published": {
     "kols": "2025-12-09T20:28:56.430511+00:00",
-    "dynamic": "2025-12-09T21:26:07.213025+00:00",
+    "dynamic": "2025-12-10T03:59:37.226750+00:00",
     "market_direction": "2025-12-10T02:11:39.444967+00:00",
     "narratives": "2025-12-09T23:27:55.740940+00:00",
     "events": "2025-12-09T19:21:18.683555+00:00",
@@ -9,13 +9,13 @@
     "altcoins": "2025-12-09T13:41:30.161870+00:00",
     "bullish": "2025-12-09T05:30:05.658044+00:00"
   },
-  "last_dynamic_question": "When is SOL Breakpoint conference?",
-  "dynamic_published_at": "2025-12-09T21:26:07.213010+00:00",
+  "last_dynamic_question": "Which chains connected via bridge?",
+  "dynamic_published_at": "2025-12-10T03:59:37.226733+00:00",
   "last_publication": {
-    "question": "Why is the market up today?",
-    "group": "market_direction",
-    "published_at": "2025-12-10T02:11:39.444978+00:00",
-    "hour_utc": 2,
-    "answer_length": 2386
+    "question": "Which chains connected via bridge?",
+    "group": "DYNAMIC",
+    "published_at": "2025-12-10T03:59:37.226755+00:00",
+    "hour_utc": 3,
+    "answer_length": 2352
   }
 }
