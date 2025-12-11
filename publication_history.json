@@ -6,7 +6,7 @@
     "narratives": "2025-12-11T11:27:43.829871+00:00",
     "events": "2025-12-11T07:31:35.889107+00:00",
     "sentiment": "2025-12-10T17:31:03.531049+00:00",
-    "altcoins": "2025-12-11T13:03:00.008191+00:00",
+    "altcoins": "2025-12-11T13:47:05.625385+00:00",
     "bullish": "2025-12-11T05:32:15.763606+00:00"
   },
   "last_dynamic_question": "What did the Fed announce yesterday?",
@@ -14,8 +14,8 @@
   "last_publication": {
     "question": "Are altcoins outperforming Bitcoin?",
     "group": "altcoins",
-    "published_at": "2025-12-11T13:03:00.008206+00:00",
+    "published_at": "2025-12-11T13:47:05.625417+00:00",
     "hour_utc": 13,
-    "answer_length": 2258
+    "answer_length": 2236
   }
 }
