@@ -1,7 +1,7 @@
 {
   "last_published": {
     "kols": "2025-12-11T08:39:58.192506+00:00",
-    "dynamic": "2025-12-10T21:31:10.625734+00:00",
+    "dynamic": "2025-12-11T09:34:31.451053+00:00",
     "market_direction": "2025-12-11T06:46:33.186543+00:00",
     "narratives": "2025-12-10T23:25:59.526120+00:00",
     "events": "2025-12-11T07:31:35.889107+00:00",
@@ -9,13 +9,13 @@
     "altcoins": "2025-12-10T13:42:49.544126+00:00",
     "bullish": "2025-12-11T05:32:15.763606+00:00"
   },
-  "last_dynamic_question": "Which banks enabled BTC trading today?",
-  "dynamic_published_at": "2025-12-10T21:31:10.625719+00:00",
+  "last_dynamic_question": "What did the Fed announce yesterday?",
+  "dynamic_published_at": "2025-12-11T09:34:31.451037+00:00",
   "last_publication": {
-    "question": "What are KOLs discussing?",
-    "group": "kols",
-    "published_at": "2025-12-11T08:39:58.192522+00:00",
-    "hour_utc": 8,
-    "answer_length": 2834
+    "question": "What did the Fed announce yesterday?",
+    "group": "DYNAMIC",
+    "published_at": "2025-12-11T09:34:31.451057+00:00",
+    "hour_utc": 9,
+    "answer_length": 2678
   }
 }
