@@ -2,7 +2,7 @@
   "last_published": {
     "kols": "2025-12-11T04:41:04.273015+00:00",
     "dynamic": "2025-12-10T21:31:10.625734+00:00",
-    "market_direction": "2025-12-11T02:14:09.564938+00:00",
+    "market_direction": "2025-12-11T06:46:33.186543+00:00",
     "narratives": "2025-12-10T23:25:59.526120+00:00",
     "events": "2025-12-10T19:26:06.045446+00:00",
     "sentiment": "2025-12-10T17:31:03.531049+00:00",
@@ -12,10 +12,10 @@
   "last_dynamic_question": "Which banks enabled BTC trading today?",
   "dynamic_published_at": "2025-12-10T21:31:10.625719+00:00",
   "last_publication": {
-    "question": "What cryptos are showing bullish momentum?",
-    "group": "bullish",
-    "published_at": "2025-12-11T05:32:15.763625+00:00",
-    "hour_utc": 5,
-    "answer_length": 2095
+    "question": "Why is the market down today?",
+    "group": "market_direction",
+    "published_at": "2025-12-11T06:46:33.186559+00:00",
+    "hour_utc": 6,
+    "answer_length": 2100
   }
 }
